@@ -8,9 +8,9 @@ extension:
     agent capabilities (brainstorming, writing-plans, TDD, subagent-driven-development,
     code-review) into a unified, resumable workflow.
   author: "Superspec Contributors"
-  repository: "https://github.com/your-org/superspec"
+  repository: "https://github.com/WangX0111/superspec"
   license: "MIT"
-  homepage: "https://github.com/your-org/superspec#readme"
+  homepage: "https://github.com/WangX0111/superspec#readme"
 requires:
   speckit_version: ">=0.1.0"
   optional_skills:
