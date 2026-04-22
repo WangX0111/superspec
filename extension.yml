@@ -1,0 +1,67 @@
+schema_version: "1.0"
+extension:
+  id: "superpowers-bridge"
+  name: "Superpowers Bridge"
+  version: "1.0.0"
+  description: >-
+    Bridges spec-kit specification-driven development with obra/superpowers
+    agent capabilities (brainstorming, writing-plans, TDD, subagent-driven-development,
+    code-review) into a unified, resumable workflow.
+  author: "Superspec Contributors"
+  repository: "https://github.com/your-org/superspec"
+  license: "MIT"
+  homepage: "https://github.com/your-org/superspec#readme"
+requires:
+  speckit_version: ">=0.1.0"
+  optional_skills:
+    - id: "brainstorming"
+      source: "obra/superpowers"
+      purpose: "Deep-dive edge case exploration during specification phase"
+    - id: "writing-plans"
+      source: "obra/superpowers"
+      purpose: "Intelligent task decomposition from implementation plans"
+    - id: "executing-plans"
+      source: "obra/superpowers"
+      purpose: "Batch execution with human checkpoints"
+    - id: "subagent-driven-development"
+      source: "obra/superpowers"
+      purpose: "Parallel task dispatch to subagents"
+    - id: "test-driven-development"
+      source: "obra/superpowers"
+      purpose: "RED-GREEN-REFACTOR discipline enforcement"
+    - id: "requesting-code-review"
+      source: "obra/superpowers"
+      purpose: "Pre-evaluation code review checklists"
+provides:
+  commands:
+    - name: "speckit.superpowers.status"
+      file: "commands/status.md"
+      description: "Show current project progress and superpowers detection status"
+    - name: "speckit.superpowers.brainstorm"
+      file: "commands/brainstorm.md"
+      description: "Deep-dive edge cases and refine a spec using brainstorming skills"
+    - name: "speckit.superpowers.tasks"
+      file: "commands/tasks.md"
+      description: "Generate phased task breakdown using writing-plans skills"
+    - name: "speckit.superpowers.execute"
+      file: "commands/execute.md"
+      description: "Orchestrate implementation with TDD, subagents, and review gates"
+    - name: "speckit.superpowers.review"
+      file: "commands/review.md"
+      description: "Run code review against spec requirements using review skills"
+  templates:
+    - file: "templates/constitution-template.md"
+      description: "Enhanced constitution with development workflow and quality gates"
+    - file: "templates/spec-template.md"
+      description: "Enhanced spec with brainstorm prompts, open questions, and brainstorm log"
+    - file: "templates/plan-template.md"
+      description: "Enhanced plan with execution strategy and superpowers dispatch"
+    - file: "templates/tasks-template.md"
+      description: "Enhanced tasks with TDD/REVIEW/SUBAGENT execution markers"
+    - file: "templates/checklist-template.md"
+      description: "Enhanced checklist with code review and spec compliance categories"
+  hooks:
+    after_tasks: "commands/hooks/after-tasks.md"
+    before_execute: "commands/hooks/before-execute.md"
+    after_execute: "commands/hooks/after-execute.md"
+tags: ["superpowers", "brainstorming", "tdd", "code-review", "subagent", "workflow"]
