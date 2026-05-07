@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate metadata and docs
+        run: python3 scripts/validate-extension-metadata.py
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Verify install with spec-kit 0.8.3
+        run: |
+          set -euo pipefail
+          tmpdir="$(mktemp -d)"
+          cd "$tmpdir"
+          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify init --here --offline --integration codex --no-git --force
+          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify extension add "$GITHUB_WORKSPACE" --dev
+          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify extension list | tee extension-list.txt
+          grep -q "Commands: 5 | Hooks: 3" extension-list.txt
+          test -f .specify/extensions.yml
+          grep -q "speckit.superpowers.tasks" .specify/extensions.yml
+          grep -q "speckit.superpowers.execute" .specify/extensions.yml
+          grep -q "speckit.superpowers.review" .specify/extensions.yml
