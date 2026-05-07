@@ -1,6 +1,7 @@
-# Hook: before_execute
+# Hook: before_implement
 
-Runs before `/speckit.execute` starts. Enforces TDD discipline and verifies prerequisites.
+Runs before `/speckit.implement` starts. Suggests `/speckit.superpowers.execute`
+for TDD discipline and prerequisite verification.
 
 ## Checks
 

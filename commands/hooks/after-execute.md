@@ -1,6 +1,6 @@
-# Hook: after_execute
+# Hook: after_implement
 
-Runs after `/speckit.execute` completes a phase or the entire execution. Requires
+Runs after `/speckit.implement` completes a phase or the entire execution. Requires
 evidence before completion claims are accepted.
 
 ## Checks

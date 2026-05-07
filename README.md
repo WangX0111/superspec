@@ -23,17 +23,17 @@ The workflow orchestrates 6 phases — from project definition through engineeri
 ### Via Spec-Kit CLI (Recommended)
 
 ```bash
-specify extension add superpowers-bridge
+specify extension add superpowers
 ```
 
 ### From Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/superspec.git
+git clone https://github.com/WangX0111/superspec.git
 
 # Install via spec-kit from local path
-specify extension add superpowers-bridge --from ./superspec
+specify extension add ./superspec --dev
 ```
 
 ### As an Agent Skill
@@ -77,7 +77,7 @@ Superpowers Bridge works standalone, but for enhanced capabilities install super
 
 All project state is persisted in `.specify/` as plain-text markdown and YAML files.
 When a session is interrupted — agent timeout, user leaves, CLI crash — no progress
-is lost. Run `/superspec.status` in a new session to see exactly where you left off:
+is lost. Run `/speckit.superpowers.status` in a new session to see exactly where you left off:
 
 ```
 Superspec Project Status
@@ -87,7 +87,7 @@ Features:
   001-user-auth    [####------] execute (Phase 5/6) — 11/19 tasks done
   002-photo-upload [##--------] brainstorm (Phase 2/6) — 2 open questions
 
-Suggested next step: /superspec.execute 001
+Suggested next step: /speckit.superpowers.execute 001
 ```
 
 Each command automatically detects previous progress and resumes from the
@@ -186,12 +186,12 @@ To submit this extension to the [spec-kit community catalog](https://github.com/
 
 ```json
 {
-  "id": "superpowers-bridge",
+  "id": "superpowers",
   "name": "Superpowers Bridge",
   "version": "1.0.0",
   "description": "Bridges spec-kit with obra/superpowers capabilities (brainstorming, writing-plans, TDD, subagent-driven-development, code-review)",
   "author": "Superspec Contributors",
-  "repository": "https://github.com/your-org/superspec",
+  "repository": "https://github.com/WangX0111/superspec",
   "verified": false,
   "tags": ["superpowers", "brainstorming", "tdd", "code-review", "subagent", "workflow"]
 }
@@ -233,17 +233,17 @@ Superpowers 提供深度澄清（头脑风暴）、智能任务拆解（计划�
 ### 通过 Spec-Kit CLI（推荐）
 
 ```bash
-specify extension add superpowers-bridge
+specify extension add superpowers
 ```
 
 ### 从源码安装
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-org/superspec.git
+git clone https://github.com/WangX0111/superspec.git
 
 # 从本地路径安装
-specify extension add superpowers-bridge --from ./superspec
+specify extension add ./superspec --dev
 ```
 
 ### 作为代理技能安装

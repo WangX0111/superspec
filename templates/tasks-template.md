@@ -32,7 +32,7 @@ description: "Task list template for feature implementation"
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
 
-  The /superspec.tasks command MUST replace these with actual tasks based on:
+  The /speckit.superpowers.tasks command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
   - Technical decisions from plan.md
   - Execution strategy from plan.md (TDD, parallel, review gates)
@@ -170,7 +170,7 @@ hardening requires review. All tests must pass before this phase is considered c
 ## Superpowers Execution
 
 <!--
-  This section documents how /superspec.execute should process this task list.
+  This section documents how /speckit.superpowers.execute should process this task list.
   The execute command reads these instructions to determine execution behavior.
 -->
 

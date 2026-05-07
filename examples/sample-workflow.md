@@ -13,7 +13,7 @@ Assume we have a fresh project with no `.specify/` directory yet.
 ## Phase 0: Create Constitution
 
 ```
-User: /superspec.constitution TaskFlow
+User: /speckit.constitution TaskFlow
 ```
 
 The agent interviews us about project principles, tech stack, and quality gates.
@@ -58,7 +58,7 @@ Authentication and authorization on every endpoint. Input validation at boundari
 ## Phase 1: Write Feature Spec
 
 ```
-User: /superspec.specify "User authentication with email/password login, registration, and password reset"
+User: /speckit.specify "User authentication with email/password login, registration, and password reset"
 ```
 
 The agent reads the constitution, interviews us about user stories, and creates:
@@ -111,7 +111,7 @@ As a user who forgot my password, I want to reset it via email.
 ## Phase 2: Brainstorm Edge Cases
 
 ```
-User: /superspec.brainstorm .specify/specs/001-user-authentication/spec.md
+User: /speckit.superpowers.brainstorm .specify/specs/001-user-authentication/spec.md
 ```
 
 The agent checks for superpowers:
@@ -180,7 +180,7 @@ After the session, the spec is updated:
 ## Phase 3: Create Implementation Plan
 
 ```
-User: /superspec.plan
+User: /speckit.plan
 ```
 
 The agent reads the spec, researches the codebase, and creates:
@@ -230,7 +230,7 @@ and rate limiting. JWT-based session management.
 ## Phase 4: Decompose Tasks
 
 ```
-User: /superspec.tasks
+User: /speckit.superpowers.tasks
 ```
 
 The agent checks for superpowers:
@@ -288,7 +288,7 @@ Creates **`.specify/specs/001-user-authentication/tasks.md`** (abbreviated):
 ## Phase 5: Execute Implementation
 
 ```
-User: /superspec.execute
+User: /speckit.superpowers.execute
 ```
 
 The agent walks through tasks phase by phase:
@@ -333,7 +333,7 @@ Agent: Phase 2 complete. Proceeding to Phase 3: Registration...
 ## Phase 6: Code Review
 
 ```
-User: /superspec.review
+User: /speckit.superpowers.review
 ```
 
 ```

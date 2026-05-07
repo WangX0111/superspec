@@ -60,8 +60,20 @@ provides:
       description: "Enhanced tasks with TDD/REVIEW/SUBAGENT execution markers"
     - file: "templates/checklist-template.md"
       description: "Enhanced checklist with code review and spec compliance categories"
-  hooks:
-    after_tasks: "commands/hooks/after-tasks.md"
-    before_execute: "commands/hooks/before-execute.md"
-    after_execute: "commands/hooks/after-execute.md"
+hooks:
+  after_tasks:
+    command: "speckit.superpowers.tasks"
+    optional: true
+    prompt: "Run enhanced Superpowers task decomposition and validation?"
+    description: "Verify task coverage and add Superpowers execution markers after core task generation"
+  before_implement:
+    command: "speckit.superpowers.execute"
+    optional: true
+    prompt: "Run Superpowers-guided implementation with TDD and checkpoints?"
+    description: "Enforce TDD discipline and Superpowers execution guidance before core implementation"
+  after_implement:
+    command: "speckit.superpowers.review"
+    optional: true
+    prompt: "Run Superpowers review against the specification and implementation?"
+    description: "Review implementation against the spec, plan, tasks, and constitution"
 tags: ["superpowers", "brainstorming", "tdd", "code-review", "subagent", "workflow"]
