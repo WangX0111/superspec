@@ -1,6 +1,6 @@
 schema_version: "1.0"
 extension:
-  id: "superpowers-bridge"
+  id: "superpowers"
   name: "Superpowers Bridge"
   version: "1.0.0"
   description: >-
