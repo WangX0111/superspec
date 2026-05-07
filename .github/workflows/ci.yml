@@ -26,14 +26,14 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
-      - name: Verify install with spec-kit 0.8.3
+      - name: Verify install with latest spec-kit
         run: |
           set -euo pipefail
           tmpdir="$(mktemp -d)"
           cd "$tmpdir"
-          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify init --here --offline --integration codex --no-git --force
-          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify extension add "$GITHUB_WORKSPACE" --dev
-          uvx --from git+https://github.com/github/spec-kit.git@v0.8.3 specify extension list | tee extension-list.txt
+          uvx --from git+https://github.com/github/spec-kit.git specify init --here --offline --integration codex --no-git --force
+          uvx --from git+https://github.com/github/spec-kit.git specify extension add "$GITHUB_WORKSPACE" --dev
+          uvx --from git+https://github.com/github/spec-kit.git specify extension list | tee extension-list.txt
           grep -q "Commands: 5 | Hooks: 3" extension-list.txt
           test -f .specify/extensions.yml
           grep -q "speckit.superpowers.tasks" .specify/extensions.yml
