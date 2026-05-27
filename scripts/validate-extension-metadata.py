@@ -34,6 +34,24 @@ def main() -> None:
         if not re.search(pattern, manifest, re.MULTILINE):
             fail(f"extension.yml missing canonical command mapping for {hook}")
 
+    id_match = re.search(r"^extension:\n(?:  .+\n)*?  id: [\"']([a-z0-9-]+)[\"']", manifest, re.MULTILINE)
+    if not id_match:
+        fail("extension.yml missing extension.id")
+    ext_id = id_match.group(1)
+
+    command_names = re.findall(r"^    - name: [\"']([^\"']+)[\"']", manifest, re.MULTILINE)
+    if not command_names:
+        fail("extension.yml missing provides.commands entries")
+
+    expected_prefix = f"speckit.{ext_id}."
+    mismatched = [name for name in command_names if not name.startswith(expected_prefix)]
+    if mismatched:
+        fail(
+            f"extension.id '{ext_id}' does not match command namespace for: "
+            + ", ".join(mismatched)
+            + f" (expected names to start with '{expected_prefix}')"
+        )
+
     docs = [
         "README.md",
         "README_zh.md",

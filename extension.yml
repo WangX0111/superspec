@@ -2,7 +2,7 @@ schema_version: "1.0"
 extension:
   id: "superpowers"
   name: "Superpowers Bridge"
-  version: "1.0.0"
+  version: "1.0.1"
   description: >-
     Bridges spec-kit specification-driven development with obra/superpowers
     agent capabilities (brainstorming, writing-plans, TDD, subagent-driven-development,
