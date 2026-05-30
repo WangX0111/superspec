@@ -78,7 +78,7 @@ the agent reads relevant sections as needed during command execution.
 
 6. **Write** to `.specify/specs/NNN-feature-name/spec.md`
 
-7. **Suggest next step**: "Run `/speckit.superpowers.brainstorm .specify/specs/NNN-feature-name/spec.md`
+7. **Suggest next step**: "Run `/speckit.superspec.brainstorm .specify/specs/NNN-feature-name/spec.md`
    to discover edge cases before planning."
 
 ### Verification
@@ -93,7 +93,7 @@ the agent reads relevant sections as needed during command execution.
 
 ## Phase 2: Brainstorming
 
-**Command**: `/speckit.superpowers.brainstorm`
+**Command**: `/speckit.superspec.brainstorm`
 **Gate**: Target spec file must exist.
 **Output**: Updated spec file (edge cases, open questions, brainstorm log).
 
@@ -213,7 +213,7 @@ This phase can be run multiple times. Each session:
 
 ## Phase 4: Task Decomposition
 
-**Command**: `/speckit.superpowers.tasks`
+**Command**: `/speckit.superspec.tasks`
 **Gate**: Plan must exist for the target feature.
 **Output**: `.specify/specs/NNN-feature-name/tasks.md`
 
@@ -255,7 +255,7 @@ This phase can be run multiple times. Each session:
 
 ## Phase 5: Execution
 
-**Command**: `/speckit.superpowers.execute`
+**Command**: `/speckit.superspec.execute`
 **Gate**: Tasks file must exist for the target feature.
 **Output**: Code changes, updated task checkboxes.
 
@@ -312,7 +312,7 @@ The agent MUST:
 
 ## Phase 6: Review
 
-**Command**: `/speckit.superpowers.review`
+**Command**: `/speckit.superspec.review`
 **Gate**: Implementation must exist (at least some tasks completed).
 **Output**: Review findings reported to user.
 
@@ -355,11 +355,11 @@ The agent MUST:
 |-------|---------|------|--------|
 | 0 | `/speckit.constitution` | None | `.specify/memory/constitution.md` |
 | 1 | `/speckit.specify` | Constitution exists | `.specify/specs/NNN/spec.md` |
-| 2 | `/speckit.superpowers.brainstorm` | Spec exists | Updated spec.md |
+| 2 | `/speckit.superspec.brainstorm` | Spec exists | Updated spec.md |
 | 3 | `/speckit.plan` | Spec exists | `.specify/specs/NNN/plan.md` |
-| 4 | `/speckit.superpowers.tasks` | Plan exists | `.specify/specs/NNN/tasks.md` |
-| 5 | `/speckit.superpowers.execute` | Tasks exist | Code + updated tasks.md |
-| 6 | `/speckit.superpowers.review` | Implementation exists | Review report |
+| 4 | `/speckit.superspec.tasks` | Plan exists | `.specify/specs/NNN/tasks.md` |
+| 5 | `/speckit.superspec.execute` | Tasks exist | Code + updated tasks.md |
+| 6 | `/speckit.superspec.review` | Implementation exists | Review report |
 
 ---
 
@@ -490,7 +490,7 @@ skills:
 | Event | Action |
 |-------|--------|
 | `/speckit.constitution` (first run) | Create the file with full detection results |
-| `/speckit.superpowers.status` | Re-run detection, update the file |
+| `/speckit.superspec.status` | Re-run detection, update the file |
 | Any command that needs a superpowers skill | If the skill was previously `detected: false`, re-check once (user may have installed it) |
 | User manually edits the file | Respect the manual override — do not overwrite |
 
@@ -504,7 +504,7 @@ skills:
 **Reading superpowers status during resume**:
 
 When the resume check runs, it reads `superpowers.yml` instead of re-detecting.
-This means a command like `/speckit.superpowers.brainstorm` will use the cached detection
+This means a command like `/speckit.superspec.brainstorm` will use the cached detection
 result to decide between enhanced mode (superpowers) and fallback mode (built-in).
 If a skill was `detected: false` last time, the command does a single re-check
 before falling back — in case the user installed it since the last session.

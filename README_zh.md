@@ -58,21 +58,21 @@ Superspec 可以独立工作，但安装 superpowers 技能可获得增强能力
 
 | 命令 | 说明 |
 |------|------|
-| `/speckit.superpowers.status` | 显示当前进度并建议下一步操作 |
+| `/speckit.superspec.status` | 显示当前进度并建议下一步操作 |
 | `/speckit.constitution` | 创建或更新项目治理原则 |
 | `/speckit.specify` | 创建功能规格（含用户故事） |
-| `/speckit.superpowers.brainstorm` | 深入探索边界情况，完善规格文档 |
+| `/speckit.superspec.brainstorm` | 深入探索边界情况，完善规格文档 |
 | `/speckit.plan` | 创建技术实现方案 |
-| `/speckit.superpowers.tasks` | 生成分阶段任务清单 |
-| `/speckit.superpowers.execute` | 以 TDD + 子代理编排方式执行实现 |
-| `/speckit.superpowers.review` | 对照规格进行代码审查 |
+| `/speckit.superspec.tasks` | 生成分阶段任务清单 |
+| `/speckit.superspec.execute` | 以 TDD + 子代理编排方式执行实现 |
+| `/speckit.superspec.review` | 对照规格进行代码审查 |
 | `/speckit.checklist` | 生成上下文相关的检查清单 |
 
 ## 可中断恢复
 
 所有项目状态以纯文本（Markdown + YAML）持久化在 `.specify/` 目录中。
 会话中断时——代理超时、用户离开、CLI 崩溃——不会丢失任何进度。
-在新会话中运行 `/speckit.superpowers.status` 即可查看中断点：
+在新会话中运行 `/speckit.superspec.status` 即可查看中断点：
 
 ```
 Superspec 项目状态
@@ -82,7 +82,7 @@ Superspec 项目状态
   001-user-auth    [####------] 执行中 (阶段 5/6) — 11/19 任务完成
   002-photo-upload [##--------] 头脑风暴 (阶段 2/6) — 2 个待解决问题
 
-建议下一步: /speckit.superpowers.execute 001
+建议下一步: /speckit.superspec.execute 001
 ```
 
 每个命令会自动检测之前的进度并从中断点恢复——跳过已完成的工作，从未解决的问题或未完成的任务继续。
@@ -108,7 +108,7 @@ Superspec 项目状态
 ### 3. 头脑风暴边界情况
 
 ```
-/speckit.superpowers.brainstorm .specify/specs/001-user-authentication/spec.md
+/speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
 ```
 
 代理逐个提出探索性问题，发现你可能没有想到的边界条件、错误场景、安全隐患和用户体验陷阱。
@@ -117,9 +117,9 @@ Superspec 项目状态
 
 ```
 /speckit.plan                  # 创建技术实现方案
-/speckit.superpowers.tasks                 # 生成任务拆解
-/speckit.superpowers.execute               # 以 TDD 纪律和检查点方式实现
-/speckit.superpowers.review                # 对照规格验证实现
+/speckit.superspec.tasks                 # 生成任务拆解
+/speckit.superspec.execute               # 以 TDD 纪律和检查点方式实现
+/speckit.superspec.review                # 对照规格验证实现
 ```
 
 ## 工作流

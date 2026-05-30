@@ -29,12 +29,12 @@ When a superspec command needs a superpowers skill:
 
 | Superspec Command | Superpowers Skill Name | Skill Directory |
 |-------------------|------------------------|-----------------|
-| `/speckit.superpowers.brainstorm` | `brainstorming` | `brainstorming/` |
-| `/speckit.superpowers.tasks` | `writing-plans` | `writing-plans/` |
-| `/speckit.superpowers.execute` | `executing-plans` | `executing-plans/` |
-| `/speckit.superpowers.execute` | `subagent-driven-development` | `subagent-driven-development/` |
-| `/speckit.superpowers.execute` | `test-driven-development` | `test-driven-development/` |
-| `/speckit.superpowers.review` | `requesting-code-review` | `requesting-code-review/` |
+| `/speckit.superspec.brainstorm` | `brainstorming` | `brainstorming/` |
+| `/speckit.superspec.tasks` | `writing-plans` | `writing-plans/` |
+| `/speckit.superspec.execute` | `executing-plans` | `executing-plans/` |
+| `/speckit.superspec.execute` | `subagent-driven-development` | `subagent-driven-development/` |
+| `/speckit.superspec.execute` | `test-driven-development` | `test-driven-development/` |
+| `/speckit.superspec.review` | `requesting-code-review` | `requesting-code-review/` |
 
 ## Invocation Pattern
 
@@ -83,7 +83,7 @@ After the superpowers skill's process completes:
 
 ## Skill-Specific Adaptation Rules
 
-### brainstorming → `/speckit.superpowers.brainstorm`
+### brainstorming → `/speckit.superspec.brainstorm`
 
 **Process adaptation**:
 - Follow the brainstorming skill's questioning protocol (one question at a time,
@@ -100,7 +100,7 @@ After the superpowers skill's process completes:
 | Clarified requirements | Update spec.md Functional Requirements |
 | Resolved questions | Update spec.md Open Questions table (mark Resolved) |
 
-### writing-plans → `/speckit.superpowers.tasks`
+### writing-plans → `/speckit.superspec.tasks`
 
 **Process adaptation**:
 - Follow the writing-plans skill's task decomposition methodology
@@ -115,7 +115,7 @@ After the superpowers skill's process completes:
 | Task dependencies | Tasks Dependencies section |
 | Parallel opportunities | Tasks marked with `[P]` and `[SUBAGENT]` |
 
-### executing-plans → `/speckit.superpowers.execute`
+### executing-plans → `/speckit.superspec.execute`
 
 **Process adaptation**:
 - Follow the executing-plans skill's batch processing protocol
@@ -129,7 +129,7 @@ After the superpowers skill's process completes:
 - `test-driven-development`: For tasks marked `[TDD]`, follow this skill's
   RED-GREEN-REFACTOR discipline
 
-### requesting-code-review → `/speckit.superpowers.review`
+### requesting-code-review → `/speckit.superspec.review`
 
 **Process adaptation**:
 - Follow the requesting-code-review skill's pre-evaluation checklist

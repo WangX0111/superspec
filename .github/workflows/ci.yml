@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           tmpdir="$(mktemp -d)"
           cd "$tmpdir"
-          uvx --from git+https://github.com/github/spec-kit.git specify init --here --offline --integration codex --no-git --force
+          uvx --from git+https://github.com/github/spec-kit.git specify init --here --offline --integration codex --ignore-agent-tools --no-git --force
           uvx --from git+https://github.com/github/spec-kit.git specify extension add "$GITHUB_WORKSPACE" --dev
           uvx --from git+https://github.com/github/spec-kit.git specify extension list | tee extension-list.txt
           grep -q "Commands: 5 | Hooks: 3" extension-list.txt

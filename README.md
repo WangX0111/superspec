@@ -23,7 +23,7 @@ The workflow orchestrates 6 phases — from project definition through engineeri
 ### Via Spec-Kit CLI (Recommended)
 
 ```bash
-specify extension add superpowers
+specify extension add superspec
 ```
 
 ### From Source
@@ -63,11 +63,11 @@ Superpowers Bridge works standalone, but for enhanced capabilities install super
 
 | Command | Description |
 |---------|-------------|
-| `/speckit.superpowers.status` | Show current progress and suggest next step |
-| `/speckit.superpowers.brainstorm` | Deep-dive edge cases and refine a spec document |
-| `/speckit.superpowers.tasks` | Generate phased task breakdown with execution markers |
-| `/speckit.superpowers.execute` | Orchestrate implementation with TDD + subagents |
-| `/speckit.superpowers.review` | Run code review against spec requirements |
+| `/speckit.superspec.status` | Show current progress and suggest next step |
+| `/speckit.superspec.brainstorm` | Deep-dive edge cases and refine a spec document |
+| `/speckit.superspec.tasks` | Generate phased task breakdown with execution markers |
+| `/speckit.superspec.execute` | Orchestrate implementation with TDD + subagents |
+| `/speckit.superspec.review` | Run code review against spec requirements |
 
 > **Note**: This extension adds 5 commands on top of the core spec-kit commands
 > (`/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`,
@@ -77,7 +77,7 @@ Superpowers Bridge works standalone, but for enhanced capabilities install super
 
 All project state is persisted in `.specify/` as plain-text markdown and YAML files.
 When a session is interrupted — agent timeout, user leaves, CLI crash — no progress
-is lost. Run `/speckit.superpowers.status` in a new session to see exactly where you left off:
+is lost. Run `/speckit.superspec.status` in a new session to see exactly where you left off:
 
 ```
 Superspec Project Status
@@ -87,7 +87,7 @@ Features:
   001-user-auth    [####------] execute (Phase 5/6) — 11/19 tasks done
   002-photo-upload [##--------] brainstorm (Phase 2/6) — 2 open questions
 
-Suggested next step: /speckit.superpowers.execute 001
+Suggested next step: /speckit.superspec.execute 001
 ```
 
 Each command automatically detects previous progress and resumes from the
@@ -117,7 +117,7 @@ with user stories, requirements, and success criteria.
 ### 3. Brainstorm Edge Cases
 
 ```
-/speckit.superpowers.brainstorm .specify/specs/001-user-authentication/spec.md
+/speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
 ```
 
 The agent asks probing questions one at a time to discover boundary conditions, error
@@ -127,9 +127,9 @@ scenarios, security concerns, and UX pitfalls you may not have considered.
 
 ```
 /speckit.plan                            # Create technical implementation plan
-/speckit.superpowers.tasks               # Generate task breakdown with execution markers
-/speckit.superpowers.execute             # Implement with TDD discipline and checkpoints
-/speckit.superpowers.review              # Verify implementation against spec
+/speckit.superspec.tasks               # Generate task breakdown with execution markers
+/speckit.superspec.execute             # Implement with TDD discipline and checkpoints
+/speckit.superspec.review              # Verify implementation against spec
 ```
 
 ## Project Structure
@@ -233,7 +233,7 @@ Superpowers 提供深度澄清（头脑风暴）、智能任务拆解（计划�
 ### 通过 Spec-Kit CLI（推荐）
 
 ```bash
-specify extension add superpowers
+specify extension add superspec
 ```
 
 ### 从源码安装
@@ -272,11 +272,11 @@ Superpowers Bridge 可以独立工作，但安装 superpowers 技能可获得增
 
 | 命令 | 说明 |
 |------|------|
-| `/speckit.superpowers.status` | 显示当前进度并建议下一步操作 |
-| `/speckit.superpowers.brainstorm` | 深入探索边界情况，完善规格文档 |
-| `/speckit.superpowers.tasks` | 生成分阶段任务清单（含执行标记） |
-| `/speckit.superpowers.execute` | 以 TDD + 子代理编排方式执行实现 |
-| `/speckit.superpowers.review` | 对照规格进行代码审查 |
+| `/speckit.superspec.status` | 显示当前进度并建议下一步操作 |
+| `/speckit.superspec.brainstorm` | 深入探索边界情况，完善规格文档 |
+| `/speckit.superspec.tasks` | 生成分阶段任务清单（含执行标记） |
+| `/speckit.superspec.execute` | 以 TDD + 子代理编排方式执行实现 |
+| `/speckit.superspec.review` | 对照规格进行代码审查 |
 
 > **注意**：此扩展在 spec-kit 核心命令（`/speckit.constitution`、`/speckit.specify`、
 > `/speckit.plan`、`/speckit.tasks`、`/speckit.checklist`）基础上增加 5 个命令。
@@ -286,7 +286,7 @@ Superpowers Bridge 可以独立工作，但安装 superpowers 技能可获得增
 
 所有项目状态以纯文本（Markdown + YAML）持久化在 `.specify/` 目录中。
 会话中断时——代理超时、用户离开、CLI 崩溃——不会丢失任何进度。
-在新会话中运行 `/speckit.superpowers.status` 即可查看中断点：
+在新会话中运行 `/speckit.superspec.status` 即可查看中断点：
 
 ```
 Superspec 项目状态
@@ -298,7 +298,7 @@ Superpowers:  brainstorming (已检测), writing-plans (未安装)
   001-user-auth    [####------] 执行中 (阶段 5/6) — 11/19 任务完成
   002-photo-upload [##--------] 头脑风暴 (阶段 2/6) — 2 个待解决问题
 
-建议下一步: /speckit.superpowers.execute 001
+建议下一步: /speckit.superspec.execute 001
 ```
 
 每个命令会自动检测之前的进度并从中断点恢复——跳过已完成的工作，从未解决的问题或未完成的任务继续。
@@ -324,7 +324,7 @@ Superpowers:  brainstorming (已检测), writing-plans (未安装)
 ### 3. 头脑风暴边界情况
 
 ```
-/speckit.superpowers.brainstorm .specify/specs/001-user-authentication/spec.md
+/speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
 ```
 
 代理逐个提出探索性问题，发现你可能没有想到的边界条件、错误场景、安全隐患和用户体验陷阱。
@@ -333,9 +333,9 @@ Superpowers:  brainstorming (已检测), writing-plans (未安装)
 
 ```
 /speckit.plan                            # 创建技术实现方案
-/speckit.superpowers.tasks               # 生成任务拆解（含执行标记）
-/speckit.superpowers.execute             # 以 TDD 纪律和检查点方式实现
-/speckit.superpowers.review              # 对照规格验证实现
+/speckit.superspec.tasks               # 生成任务拆解（含执行标记）
+/speckit.superspec.execute             # 以 TDD 纪律和检查点方式实现
+/speckit.superspec.review              # 对照规格验证实现
 ```
 
 ## 工作流

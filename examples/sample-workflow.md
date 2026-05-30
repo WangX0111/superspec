@@ -111,7 +111,7 @@ As a user who forgot my password, I want to reset it via email.
 ## Phase 2: Brainstorm Edge Cases
 
 ```
-User: /speckit.superpowers.brainstorm .specify/specs/001-user-authentication/spec.md
+User: /speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
 ```
 
 The agent checks for superpowers:
@@ -230,7 +230,7 @@ and rate limiting. JWT-based session management.
 ## Phase 4: Decompose Tasks
 
 ```
-User: /speckit.superpowers.tasks
+User: /speckit.superspec.tasks
 ```
 
 The agent checks for superpowers:
@@ -288,7 +288,7 @@ Creates **`.specify/specs/001-user-authentication/tasks.md`** (abbreviated):
 ## Phase 5: Execute Implementation
 
 ```
-User: /speckit.superpowers.execute
+User: /speckit.superspec.execute
 ```
 
 The agent walks through tasks phase by phase:
@@ -333,7 +333,7 @@ Agent: Phase 2 complete. Proceeding to Phase 3: Registration...
 ## Phase 6: Code Review
 
 ```
-User: /speckit.superpowers.review
+User: /speckit.superspec.review
 ```
 
 ```

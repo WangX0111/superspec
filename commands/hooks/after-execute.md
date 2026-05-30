@@ -11,7 +11,7 @@ evidence before completion claims are accepted.
 3. **Progress update**: Update `.specify/specs/NNN/progress.yml` with completed tasks
    and current phase status
 4. **Review suggestion**: If all tasks in a phase are complete, suggest running
-   `/speckit.superpowers.review` before proceeding to the next phase
+   `/speckit.superspec.review` before proceeding to the next phase
 
 ## Gate
 

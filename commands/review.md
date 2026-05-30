@@ -1,11 +1,11 @@
-# speckit.superpowers.review
+# speckit.superspec.review
 
 Run code review against spec requirements using review skills.
 
 ## Usage
 
 ```
-/speckit.superpowers.review [scope]
+/speckit.superspec.review [scope]
 ```
 
 **Scope**: Optional file paths, spec number, or "all changes". Defaults to the latest feature.

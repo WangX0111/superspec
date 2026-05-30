@@ -56,14 +56,14 @@ When initialized, superspec creates a `.specify/` directory in the project root:
 
 | Command | Purpose |
 |---------|---------|
-| `/speckit.superpowers.status` | Show current progress and suggest next step (resumable) |
+| `/speckit.superspec.status` | Show current progress and suggest next step (resumable) |
 | `/speckit.constitution` | Create or update project governance principles |
 | `/speckit.specify` | Create a feature specification with user stories |
-| `/speckit.superpowers.brainstorm` | Deep-dive edge cases and refine a spec document |
+| `/speckit.superspec.brainstorm` | Deep-dive edge cases and refine a spec document |
 | `/speckit.plan` | Create a technical implementation plan |
-| `/speckit.superpowers.tasks` | Generate a phased task breakdown |
-| `/speckit.superpowers.execute` | Orchestrate implementation with TDD + subagents |
-| `/speckit.superpowers.review` | Run code review against spec requirements |
+| `/speckit.superspec.tasks` | Generate a phased task breakdown |
+| `/speckit.superspec.execute` | Orchestrate implementation with TDD + subagents |
+| `/speckit.superspec.review` | Run code review against spec requirements |
 | `/speckit.checklist` | Generate a contextual checklist |
 
 ---
@@ -126,7 +126,7 @@ skills:
 
 **When this file is updated**:
 - On `/speckit.constitution` (initial creation)
-- On `/speckit.superpowers.status` (re-check)
+- On `/speckit.superspec.status` (re-check)
 - On any command that needs a superpowers skill (lazy re-check if missing)
 - User can manually edit this file to override detection results
 
@@ -164,7 +164,7 @@ When ANY superspec command is invoked, the agent MUST first run the **resume che
 
 ---
 
-## `/speckit.superpowers.status`
+## `/speckit.superspec.status`
 
 **Input**: Optional spec number or "all" via `$ARGUMENTS`. Defaults to showing all features.
 **Output**: Progress report printed to user.
@@ -189,7 +189,7 @@ Features:
   002-photo-upload [##--------] brainstorm (Phase 2/6) — 2 open questions
   003-settings     [#---------] specify (Phase 1/6) — draft
 
-Suggested next step: /speckit.superpowers.execute 001
+Suggested next step: /speckit.superspec.execute 001
 ```
 
 5. If no `.specify/` exists, suggest: "No superspec project found. Run
@@ -236,11 +236,11 @@ which files are present:
 6. Generate `spec.md` from template with user responses
 7. Write to `.specify/specs/NNN-feature-name/spec.md`
 
-**Next step suggestion**: Run `/speckit.superpowers.brainstorm` on the new spec to discover edge cases.
+**Next step suggestion**: Run `/speckit.superspec.brainstorm` on the new spec to discover edge cases.
 
 ---
 
-## `/speckit.superpowers.brainstorm`
+## `/speckit.superspec.brainstorm`
 
 **Input**: Path to a spec file (e.g., `.specify/specs/001-auth/spec.md`) and an optional
 focus topic via `$ARGUMENTS`.
@@ -292,7 +292,7 @@ blueprint generation process to enhance the plan's task structure section. See
 
 ---
 
-## `/speckit.superpowers.tasks`
+## `/speckit.superspec.tasks`
 
 **Input**: Optional spec number or path via `$ARGUMENTS`. Defaults to the latest spec.
 **Output**: `.specify/specs/NNN-feature-name/tasks.md`
@@ -315,7 +315,7 @@ blueprint generation process to enhance the plan's task structure section. See
 
 ---
 
-## `/speckit.superpowers.execute`
+## `/speckit.superspec.execute`
 
 **Input**: Optional spec number or path via `$ARGUMENTS`. Defaults to the latest spec.
 **Output**: Code changes in the project, updated task checkboxes.
@@ -331,7 +331,7 @@ blueprint generation process to enhance the plan's task structure section. See
    - **`[SUBAGENT]` tasks**: If subagent-driven-development skill found, follow its
      dispatch protocol. Otherwise: implement sequentially in-session
    - **`[P]` tasks**: Launch parallel tasks where possible using the Task tool
-   - **`[REVIEW]` tasks**: Pause and run review protocol (see `/speckit.superpowers.review`)
+   - **`[REVIEW]` tasks**: Pause and run review protocol (see `/speckit.superspec.review`)
 5. At each **phase checkpoint**: Summarize completed work, run tests if applicable,
    ask user for approval before proceeding to next phase
 6. Update task checkboxes in `tasks.md` as each task completes
@@ -341,7 +341,7 @@ explicit user approval. Never skip a checkpoint.
 
 ---
 
-## `/speckit.superpowers.review`
+## `/speckit.superspec.review`
 
 **Input**: Optional scope (file paths or "all changes") via `$ARGUMENTS`.
 **Output**: Review findings reported to user, optionally written to a checklist file.
@@ -384,15 +384,15 @@ The recommended end-to-end workflow:
 ```
 Phase 0: /speckit.constitution     → Establish project governance
 Phase 1: /speckit.specify          → Define feature requirements
-Phase 2: /speckit.superpowers.brainstorm       → Clarify edge cases (iterate)
+Phase 2: /speckit.superspec.brainstorm       → Clarify edge cases (iterate)
 Phase 3: /speckit.plan             → Design technical approach
-Phase 4: /speckit.superpowers.tasks            → Decompose into executable tasks
-Phase 5: /speckit.superpowers.execute          → Implement with TDD + subagents
-Phase 6: /speckit.superpowers.review           → Verify against spec
+Phase 4: /speckit.superspec.tasks            → Decompose into executable tasks
+Phase 5: /speckit.superspec.execute          → Implement with TDD + subagents
+Phase 6: /speckit.superspec.review           → Verify against spec
 ```
 
 Each phase has an explicit **gate** — the agent verifies prerequisites before proceeding.
-Run `/speckit.superpowers.brainstorm` multiple times until the spec is solid. The user controls
+Run `/speckit.superspec.brainstorm` multiple times until the spec is solid. The user controls
 when to advance to the next phase.
 
 ## Additional Resources

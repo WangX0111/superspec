@@ -69,7 +69,7 @@
 
 <!--
   ACTION REQUIRED: Fill in the right edge cases for this feature.
-  Use the brainstorm prompts below as conversation starters for /speckit.superpowers.brainstorm.
+  Use the brainstorm prompts below as conversation starters for /speckit.superspec.brainstorm.
 -->
 
 - What happens when [boundary condition]?
@@ -78,7 +78,7 @@
 #### Brainstorm Prompts
 
 <!--
-  These prompts guide the /speckit.superpowers.brainstorm command. They serve as starting points
+  These prompts guide the /speckit.superspec.brainstorm command. They serve as starting points
   for deep-dive questioning sessions. Add domain-specific prompts as needed.
 -->
 
@@ -95,7 +95,7 @@
 <!--
   This section tracks unresolved questions discovered during brainstorming.
   Each question has a status (Open/Resolved) and a resolution summary.
-  /speckit.superpowers.brainstorm updates this section as questions are explored.
+  /speckit.superspec.brainstorm updates this section as questions are explored.
 -->
 
 | # | Question | Status | Resolution |
@@ -141,7 +141,7 @@
 ## Brainstorm Log
 
 <!--
-  This section records insights from /speckit.superpowers.brainstorm sessions.
+  This section records insights from /speckit.superspec.brainstorm sessions.
   Each entry is dated and summarizes what was discovered and decided.
   Do not edit manually — this is maintained by the brainstorm command.
 -->

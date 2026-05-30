@@ -45,7 +45,7 @@
 .specify/specs/[###-feature]/
 ├── spec.md              # Feature specification
 ├── plan.md              # This file
-├── tasks.md             # Task breakdown (/speckit.superpowers.tasks output)
+├── tasks.md             # Task breakdown (/speckit.superspec.tasks output)
 └── checklist-*.md       # Generated checklists
 ```
 
@@ -73,8 +73,8 @@ tests/
 ## Execution Strategy
 
 <!--
-  This section identifies HOW tasks should be executed, feeding into /speckit.superpowers.tasks
-  and /speckit.superpowers.execute commands.
+  This section identifies HOW tasks should be executed, feeding into /speckit.superspec.tasks
+  and /speckit.superspec.execute commands.
 -->
 
 ### TDD Requirements

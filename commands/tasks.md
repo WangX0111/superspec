@@ -1,11 +1,11 @@
-# speckit.superpowers.tasks
+# speckit.superspec.tasks
 
 Generate a phased task breakdown using writing-plans skills.
 
 ## Usage
 
 ```
-/speckit.superpowers.tasks [spec-number|spec-path]
+/speckit.superspec.tasks [spec-number|spec-path]
 ```
 
 ## Process

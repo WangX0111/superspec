@@ -1,11 +1,11 @@
-# speckit.superpowers.status
+# speckit.superspec.status
 
 Show current project progress, feature status, and superpowers detection results.
 
 ## Usage
 
 ```
-/speckit.superpowers.status [spec-number|all]
+/speckit.superspec.status [spec-number|all]
 ```
 
 ## Process
@@ -29,7 +29,7 @@ Features:
   002-photo-upload [##--------] brainstorm (Phase 2/6) — 2 open questions
   003-settings     [#---------] specify (Phase 1/6) — draft
 
-Suggested next step: /speckit.superpowers.execute 001
+Suggested next step: /speckit.superspec.execute 001
 ```
 
 6. If no `.specify/` exists, suggest: "No superspec project found. Run

@@ -47,11 +47,11 @@ This project follows **specification-driven development** using the superspec pi
 
 1. **Constitution** (`/speckit.constitution`): Establish and maintain these governance principles
 2. **Specification** (`/speckit.specify`): Define feature requirements before any code is written
-3. **Brainstorming** (`/speckit.superpowers.brainstorm`): Challenge assumptions and discover edge cases
+3. **Brainstorming** (`/speckit.superspec.brainstorm`): Challenge assumptions and discover edge cases
 4. **Planning** (`/speckit.plan`): Design technical approach with constitution compliance check
-5. **Task Decomposition** (`/speckit.superpowers.tasks`): Break down into executable, trackable tasks
-6. **Execution** (`/speckit.superpowers.execute`): Implement with appropriate discipline (TDD, subagents)
-7. **Review** (`/speckit.superpowers.review`): Verify implementation against spec and constitution
+5. **Task Decomposition** (`/speckit.superspec.tasks`): Break down into executable, trackable tasks
+6. **Execution** (`/speckit.superspec.execute`): Implement with appropriate discipline (TDD, subagents)
+7. **Review** (`/speckit.superspec.review`): Verify implementation against spec and constitution
 
 ### Workflow Rules
 
@@ -64,7 +64,7 @@ This project follows **specification-driven development** using the superspec pi
 
 <!--
   Define what review and testing gates apply to this project.
-  These feed into the /speckit.superpowers.review and /speckit.superpowers.execute commands.
+  These feed into the /speckit.superspec.review and /speckit.superspec.execute commands.
 -->
 
 ### Testing Requirements

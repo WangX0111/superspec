@@ -1,14 +1,14 @@
-# speckit.superpowers.brainstorm
+# speckit.superspec.brainstorm
 
 Deep-dive edge cases and refine a spec document using brainstorming skills.
 
 ## Usage
 
 ```
-/speckit.superpowers.brainstorm [spec-path] [focus-topic]
+/speckit.superspec.brainstorm [spec-path] [focus-topic]
 ```
 
-**Example**: `/speckit.superpowers.brainstorm specs/001-develop/spec.md "Discuss the Edge Cases in the requirements document and confirm how to resolve these scenarios."`
+**Example**: `/speckit.superspec.brainstorm specs/001-develop/spec.md "Discuss the Edge Cases in the requirements document and confirm how to resolve these scenarios."`
 
 ## Process
 

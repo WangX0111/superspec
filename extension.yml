@@ -1,8 +1,8 @@
 schema_version: "1.0"
 extension:
-  id: "superpowers"
+  id: "superspec"
   name: "Superpowers Bridge"
-  version: "1.0.0"
+  version: "1.0.1"
   description: >-
     Bridges spec-kit specification-driven development with obra/superpowers
     agent capabilities (brainstorming, writing-plans, TDD, subagent-driven-development,
@@ -34,19 +34,19 @@ requires:
       purpose: "Pre-evaluation code review checklists"
 provides:
   commands:
-    - name: "speckit.superpowers.status"
+    - name: "speckit.superspec.status"
       file: "commands/status.md"
       description: "Show current project progress and superpowers detection status"
-    - name: "speckit.superpowers.brainstorm"
+    - name: "speckit.superspec.brainstorm"
       file: "commands/brainstorm.md"
       description: "Deep-dive edge cases and refine a spec using brainstorming skills"
-    - name: "speckit.superpowers.tasks"
+    - name: "speckit.superspec.tasks"
       file: "commands/tasks.md"
       description: "Generate phased task breakdown using writing-plans skills"
-    - name: "speckit.superpowers.execute"
+    - name: "speckit.superspec.execute"
       file: "commands/execute.md"
       description: "Orchestrate implementation with TDD, subagents, and review gates"
-    - name: "speckit.superpowers.review"
+    - name: "speckit.superspec.review"
       file: "commands/review.md"
       description: "Run code review against spec requirements using review skills"
   templates:
@@ -62,17 +62,17 @@ provides:
       description: "Enhanced checklist with code review and spec compliance categories"
 hooks:
   after_tasks:
-    command: "speckit.superpowers.tasks"
+    command: "speckit.superspec.tasks"
     optional: true
     prompt: "Run enhanced Superpowers task decomposition and validation?"
     description: "Verify task coverage and add Superpowers execution markers after core task generation"
   before_implement:
-    command: "speckit.superpowers.execute"
+    command: "speckit.superspec.execute"
     optional: true
     prompt: "Run Superpowers-guided implementation with TDD and checkpoints?"
     description: "Enforce TDD discipline and Superpowers execution guidance before core implementation"
   after_implement:
-    command: "speckit.superpowers.review"
+    command: "speckit.superspec.review"
     optional: true
     prompt: "Run Superpowers review against the specification and implementation?"
     description: "Review implementation against the spec, plan, tasks, and constitution"
