@@ -13,4 +13,5 @@ Thumbs.db
 *~
 
 # Spec-kit project files (generated, not source)
-.specify/
+# Anchored to repo root so examples/**/.specify/ snapshots are still tracked.
+/.specify/
