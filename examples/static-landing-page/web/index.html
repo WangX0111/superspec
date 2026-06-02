@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperSpec — Specification-Driven Development</title>
+  <style>
+    /* ========================================
+       T003: CSS reset/base styles
+       ======================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       T004: CSS custom properties
+       ======================================== */
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a2e;
+      --color-primary: #0f3460;
+      --color-primary-light: #1663a8;
+      --color-accent: #e94560;
+      --color-surface: #f8f9fa;
+      --color-border: #dee2e6;
+      --color-muted: #6c757d;
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --spacing-3xl: 4rem;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --radius: 0.5rem;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    /* ========================================
+       T005: Responsive typography using clamp()
+       ======================================== */
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+    }
+
+    /* ========================================
+       T006: Container utility class
+       ======================================== */
+    .container {
+      max-width: 72rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--spacing-lg);
+      padding-right: var(--spacing-lg);
+    }
+
+    /* ========================================
+       T010: Hero section CSS
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--spacing-xl) var(--spacing-lg);
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .hero h1 {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      margin-bottom: var(--spacing-2xl);
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background-color: var(--color-accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      border: 2px solid var(--color-accent);
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .cta-button:hover {
+      background-color: #d63d56;
+      border-color: #d63d56;
+    }
+
+    .cta-button:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 3px;
+    }
+
+    /* ========================================
+       T013: Features grid CSS
+       ======================================== */
+    #features {
+      padding: var(--spacing-3xl) 0;
+    }
+
+    #features h2 {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .card {
+      padding: var(--spacing-xl);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+
+    .card h3 {
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary);
+    }
+
+    /* ========================================
+       T016: Workflow step indicator CSS
+       ======================================== */
+    #workflow {
+      padding: var(--spacing-3xl) 0;
+      background-color: var(--color-surface);
+    }
+
+    #workflow h2 {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-lg);
+      padding: 0;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      position: relative;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .step-list li::after {
+      content: "";
+      position: absolute;
+      top: 2.5rem;
+      left: 1.15rem;
+      width: 2px;
+      height: var(--spacing-lg);
+      background-color: var(--color-border);
+    }
+
+    .step-list li:last-child::after {
+      display: none;
+    }
+
+    /* ========================================
+       T017/T018: Install snippet CSS
+       ======================================== */
+    .install-block {
+      margin-top: var(--spacing-3xl);
+      text-align: center;
+    }
+
+    .install-block h2 {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .code-snippet {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+      background-color: var(--color-text);
+      color: #f8f9fa;
+      padding: var(--spacing-md) var(--spacing-xl);
+      border-radius: var(--radius);
+      border: 1px solid var(--color-border);
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .code-snippet:focus-visible {
+      outline: 3px solid var(--color-primary-light);
+      outline-offset: 3px;
+    }
+
+    /* ========================================
+       T020: Footer CSS
+       ======================================== */
+    footer {
+      padding: var(--spacing-2xl) 0;
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+    }
+
+    footer p {
+      font-size: 0.875rem;
+    }
+
+    /* ========================================
+       T008/T011/T014/T019: Responsive breakpoints
+       ======================================== */
+    @media (min-width: 768px) {
+      /* T011: Hero responsive - larger heading */
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+      }
+
+      /* T014: Features grid - 2 columns */
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* T019: Workflow - horizontal step indicator */
+      .step-list {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .step-list li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1 1 0;
+        max-width: 10rem;
+        position: relative;
+        padding: 0 var(--spacing-sm);
+      }
+
+      .step-list li::after {
+        position: absolute;
+        top: 1.15rem;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-border);
+      }
+
+      .step-list li:last-child::after {
+        display: none;
+      }
+
+      /* Wider code block */
+      .code-snippet {
+        font-size: 1.125rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      /* T011: Hero - max heading size with comfortable spacing */
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero .tagline {
+        max-width: 36rem;
+      }
+
+      /* T019: Full-width step indicator */
+      .step-list {
+        max-width: 54rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* T014: Features grid - 3 columns with centered second row */
+      .features-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .card {
+        grid-column: span 2;
+      }
+
+      .card:nth-child(4) {
+        grid-column: 2 / 4;
+      }
+
+      .card:nth-child(5) {
+        grid-column: 4 / 6;
+      }
+    }
+
+    /* ========================================
+       T021: Print stylesheet
+       ======================================== */
+    @media print {
+      * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      body {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 12pt;
+        line-height: 1.5;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 1em 0;
+        border-bottom: 2pt solid #000;
+      }
+
+      .container {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .card {
+        border: 1pt solid #000;
+        page-break-inside: avoid;
+      }
+
+      .features-grid {
+        display: block;
+      }
+
+      .features-grid .card {
+        margin-bottom: 1em;
+      }
+
+      .step-list {
+        display: block;
+      }
+
+      .step-list li::before {
+        border: 1pt solid #000;
+        background: transparent;
+        color: #000;
+      }
+
+      .step-list li::after {
+        display: none;
+      }
+
+      .code-snippet {
+        border: 2pt solid #000;
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        display: block;
+      }
+
+      footer {
+        border-top: 1pt solid #000;
+        padding-top: 1em;
+      }
+
+      .cta-button {
+        border: 1pt solid #000;
+      }
+    }
+
+    /* ========================================
+       T022: Accessibility CSS
+       ======================================== */
+    :focus-visible {
+      outline: 3px solid var(--color-primary-light);
+      outline-offset: 2px;
+    }
+
+    @media (forced-colors: active) {
+      .card {
+        border: 2px solid ButtonText;
+      }
+
+      .cta-button {
+        border: 2px solid ButtonText;
+      }
+
+      .code-snippet {
+        border: 2px solid ButtonText;
+      }
+
+      .hero {
+        border-bottom: 2px solid ButtonText;
+      }
+
+      .step-list li::before {
+        border: 2px solid ButtonText;
+        background: Canvas;
+        color: ButtonText;
+      }
+
+      .step-list li::after {
+        background: ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- T007/T009: Hero section -->
+  <header class="hero">
+    <div class="container">
+      <h1>SuperSpec</h1>
+      <p class="tagline">Specification-driven development for modern teams</p>
+      <a href="#install" class="cta-button">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- T012: Features section -->
+    <section id="features">
+      <div class="container">
+        <h2>Core Commands</h2>
+        <div class="features-grid">
+          <article class="card">
+            <h3>status</h3>
+            <p>Check the current state of your specification and implementation progress</p>
+          </article>
+          <article class="card">
+            <h3>brainstorm</h3>
+            <p>Generate creative ideas and explore solution spaces for your feature</p>
+          </article>
+          <article class="card">
+            <h3>tasks</h3>
+            <p>Decompose your plan into concrete, actionable implementation tasks</p>
+          </article>
+          <article class="card">
+            <h3>execute</h3>
+            <p>Run the implementation workflow, processing tasks in order</p>
+          </article>
+          <article class="card">
+            <h3>review</h3>
+            <p>Verify the implementation against the specification and constitution</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- T015/T017: Workflow diagram & install snippet -->
+    <section id="workflow">
+      <div class="container">
+        <h2>How It Works</h2>
+        <ol class="step-list">
+          <li>status</li>
+          <li>brainstorm</li>
+          <li>tasks</li>
+          <li>execute</li>
+          <li>review</li>
+        </ol>
+        <div id="install" class="install-block">
+          <h2>Install</h2>
+          <code class="code-snippet" tabindex="0">npm install -g superspec</code>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- T020: Footer -->
+  <footer>
+    <div class="container">
+      <p>SuperSpec — Specification-driven development</p>
+    </div>
+  </footer>
+</body>
+</html>

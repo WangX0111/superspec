@@ -36,7 +36,7 @@ Orchestrate implementation with TDD, subagents, and review gates.
    - Ask user for approval before proceeding to next phase
 
 6. Update task checkboxes in `tasks.md` as each task completes
-7. Update `.specify/specs/NNN/progress.yml` with current execution state
+7. Update `specs/NNN/progress.yml` with current execution state
 
 ## Output
 

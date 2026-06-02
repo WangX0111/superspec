@@ -50,13 +50,13 @@ the agent reads relevant sections as needed during command execution.
 
 **Command**: `/speckit.specify`
 **Gate**: Constitution must exist at `.specify/memory/constitution.md`
-**Output**: `.specify/specs/NNN-feature-name/spec.md`
+**Output**: `specs/NNN-feature-name/spec.md`
 
 ### Steps
 
 1. **Verify constitution** exists. If not, guide user to run `/speckit.constitution` first.
 
-2. **Determine spec number**: Scan `.specify/specs/` for existing directories.
+2. **Determine spec number**: Scan `specs/` for existing directories.
    Next number = highest existing + 1, zero-padded to 3 digits (001, 002, ...).
 
 3. **Read constitution** to understand project constraints and principles.
@@ -76,9 +76,9 @@ the agent reads relevant sections as needed during command execution.
    - Leave "Open Questions", "Brainstorm Log", and "Brainstorm Prompts" sections
      with initial prompts but no resolved content
 
-6. **Write** to `.specify/specs/NNN-feature-name/spec.md`
+6. **Write** to `specs/NNN-feature-name/spec.md`
 
-7. **Suggest next step**: "Run `/speckit.superspec.brainstorm .specify/specs/NNN-feature-name/spec.md`
+7. **Suggest next step**: "Run `/speckit.superspec.brainstorm specs/NNN-feature-name/spec.md`
    to discover edge cases before planning."
 
 ### Verification
@@ -171,7 +171,7 @@ This phase can be run multiple times. Each session:
 
 **Command**: `/speckit.plan`
 **Gate**: Spec file must exist. Brainstorm is recommended but not required.
-**Output**: `.specify/specs/NNN-feature-name/plan.md`
+**Output**: `specs/NNN-feature-name/plan.md`
 
 ### Steps
 
@@ -200,7 +200,7 @@ This phase can be run multiple times. Each session:
 
 7. **Generate plan** using `plan-template.md` as skeleton. Fill all sections.
 
-8. **Write** to `.specify/specs/NNN-feature-name/plan.md`
+8. **Write** to `specs/NNN-feature-name/plan.md`
 
 ### Verification
 
@@ -215,7 +215,7 @@ This phase can be run multiple times. Each session:
 
 **Command**: `/speckit.superspec.tasks`
 **Gate**: Plan must exist for the target feature.
-**Output**: `.specify/specs/NNN-feature-name/tasks.md`
+**Output**: `specs/NNN-feature-name/tasks.md`
 
 ### Steps
 
@@ -241,7 +241,7 @@ This phase can be run multiple times. Each session:
 
 6. **Document dependencies** and execution order.
 
-7. **Write** to `.specify/specs/NNN-feature-name/tasks.md`
+7. **Write** to `specs/NNN-feature-name/tasks.md`
 
 ### Verification
 
@@ -354,10 +354,10 @@ The agent MUST:
 | Phase | Command | Gate | Output |
 |-------|---------|------|--------|
 | 0 | `/speckit.constitution` | None | `.specify/memory/constitution.md` |
-| 1 | `/speckit.specify` | Constitution exists | `.specify/specs/NNN/spec.md` |
+| 1 | `/speckit.specify` | Constitution exists | `specs/NNN/spec.md` |
 | 2 | `/speckit.superspec.brainstorm` | Spec exists | Updated spec.md |
-| 3 | `/speckit.plan` | Spec exists | `.specify/specs/NNN/plan.md` |
-| 4 | `/speckit.superspec.tasks` | Plan exists | `.specify/specs/NNN/tasks.md` |
+| 3 | `/speckit.plan` | Spec exists | `specs/NNN/plan.md` |
+| 4 | `/speckit.superspec.tasks` | Plan exists | `specs/NNN/tasks.md` |
 | 5 | `/speckit.superspec.execute` | Tasks exist | Code + updated tasks.md |
 | 6 | `/speckit.superspec.review` | Implementation exists | Review report |
 
@@ -365,8 +365,10 @@ The agent MUST:
 
 ## Session Resumability
 
-Superspec is designed to survive session interruptions. All state lives in `.specify/`
-as plain-text files. This section documents how the agent detects and resumes work.
+Superspec is designed to survive session interruptions. All state lives in plain-text
+files under `.specify/memory/` (governance — `constitution.md`) and `specs/NNN-*/`
+(per-feature — `spec.md`, `plan.md`, `tasks.md`, `progress.yml`). This section
+documents how the agent detects and resumes work.
 
 ### Progress File: `progress.yml`
 

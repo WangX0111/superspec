@@ -4,7 +4,7 @@ description: "Task list template for feature implementation"
 
 # Tasks: [FEATURE NAME]
 
-**Input**: Design documents from `.specify/specs/[###-feature-name]/`
+**Input**: Design documents from `specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories)
 
 ## Task Format

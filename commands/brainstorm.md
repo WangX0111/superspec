@@ -44,6 +44,6 @@ brainstorm log and skips previously explored categories.
 
 When using the `brainstorming` skill, adapt its outputs:
 - Design documents → fold insights back into the existing `spec.md`
-- Output location → write to `.specify/specs/NNN/spec.md` (not `docs/superpowers/`)
+- Output location → write to `specs/NNN/spec.md` (not `docs/superpowers/`)
 
 See `references/superpowers-bridge.md` for full adaptation rules.

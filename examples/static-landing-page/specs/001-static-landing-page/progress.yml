@@ -1,0 +1,57 @@
+spec: 001-static-landing-page
+status: complete
+current_phase: 6
+phases:
+  - phase: 1
+    name: Setup
+    status: complete
+    tasks:
+      T001: complete
+      T002: complete
+  - phase: 2
+    name: Foundational
+    status: complete
+    tasks:
+      T003: complete
+      T004: complete
+      T005: complete
+      T006: complete
+      T007: complete
+      T008: complete
+  - phase: 3
+    name: Hero Section (US1)
+    status: complete
+    tasks:
+      T009: complete
+      T010: complete
+      T011: complete
+  - phase: 4
+    name: Features Grid (US2)
+    status: complete
+    tasks:
+      T012: complete
+      T013: complete
+      T014: complete
+  - phase: 5
+    name: Workflow Diagram & Install Snippet (US3)
+    status: complete
+    tasks:
+      T015: complete
+      T016: complete
+      T017: complete
+      T018: complete
+      T019: complete
+  - phase: 6
+    name: Polish & Cross-Cutting
+    status: complete
+    tasks:
+      T020: complete
+      T021: complete
+      T022: complete
+      T023: manual-browser-only
+      T024: manual-browser-only
+      T025: manual-browser-only
+      T026: complete
+      T027: manual-browser-only
+      T028: manual-browser-only
+      T029: complete

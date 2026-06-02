@@ -63,7 +63,7 @@ User: /speckit.specify "User authentication with email/password login, registrat
 
 The agent reads the constitution, interviews us about user stories, and creates:
 
-**`.specify/specs/001-user-authentication/spec.md`** (abbreviated):
+**`specs/001-user-authentication/spec.md`** (abbreviated):
 
 ```markdown
 # Feature Specification: User Authentication
@@ -111,7 +111,7 @@ As a user who forgot my password, I want to reset it via email.
 ## Phase 2: Brainstorm Edge Cases
 
 ```
-User: /speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
+User: /speckit.superspec.brainstorm specs/001-user-authentication/spec.md
 ```
 
 The agent checks for superpowers:
@@ -185,7 +185,7 @@ User: /speckit.plan
 
 The agent reads the spec, researches the codebase, and creates:
 
-**`.specify/specs/001-user-authentication/plan.md`** (abbreviated):
+**`specs/001-user-authentication/plan.md`** (abbreviated):
 
 ```markdown
 # Implementation Plan: User Authentication
@@ -240,7 +240,7 @@ Checking for writing-plans skill...
 ✗ writing-plans not detected, using template-based decomposition.
 ```
 
-Creates **`.specify/specs/001-user-authentication/tasks.md`** (abbreviated):
+Creates **`specs/001-user-authentication/tasks.md`** (abbreviated):
 
 ```markdown
 # Tasks: User Authentication

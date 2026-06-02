@@ -23,11 +23,11 @@ Generate a phased task breakdown using writing-plans skills.
    - `[REVIEW]` — requires code review before proceeding
    - `[SUBAGENT]` — can be delegated to a subagent
 6. Define phase dependencies and checkpoint gates
-7. Write to `.specify/specs/NNN-feature-name/tasks.md`
+7. Write to `specs/NNN-feature-name/tasks.md`
 
 ## Output
 
-`.specify/specs/NNN-feature-name/tasks.md` with phased task breakdown.
+`specs/NNN-feature-name/tasks.md` with phased task breakdown.
 
 ## Execution Markers
 
@@ -41,7 +41,7 @@ Generate a phased task breakdown using writing-plans skills.
 ## Superpowers Adaptation
 
 When using the `writing-plans` skill, adapt its outputs:
-- Implementation blueprints → merge into `.specify/specs/NNN/tasks.md` using template structure
+- Implementation blueprints → merge into `specs/NNN/tasks.md` using template structure
 - Task dependencies → map to the Dependencies section
 - Parallel opportunities → mark with `[P]` and `[SUBAGENT]`
 

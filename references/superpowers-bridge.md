@@ -54,14 +54,14 @@ Before following the skill's process, establish context adaptation rules:
 
 - **Input context**: Pass relevant spec-kit artifacts as context
   - Constitution: `.specify/memory/constitution.md`
-  - Spec: `.specify/specs/NNN/spec.md`
-  - Plan: `.specify/specs/NNN/plan.md` (if exists)
-  - Tasks: `.specify/specs/NNN/tasks.md` (if exists)
+  - Spec: `specs/NNN/spec.md`
+  - Plan: `specs/NNN/plan.md` (if exists)
+  - Tasks: `specs/NNN/tasks.md` (if exists)
 
 - **Output location**: All outputs go to the `.specify/` structure
   - Superpowers may default to `docs/superpowers/` — redirect to `.specify/`
   - Brainstorming insights → update spec.md (Edge Cases, Open Questions, Brainstorm Log)
-  - Writing-plans output → merge into `.specify/specs/NNN/tasks.md`
+  - Writing-plans output → merge into `specs/NNN/tasks.md`
   - Code review findings → report to user, optionally write to checklist file
 
 - **Naming conventions**: Use spec-kit conventions
@@ -111,7 +111,7 @@ After the superpowers skill's process completes:
 **Output mapping**:
 | Superpowers Output | Superspec Destination |
 |--------------------|-----------------------|
-| Implementation blueprint | `.specify/specs/NNN/tasks.md` |
+| Implementation blueprint | `specs/NNN/tasks.md` |
 | Task dependencies | Tasks Dependencies section |
 | Parallel opportunities | Tasks marked with `[P]` and `[SUBAGENT]` |
 
@@ -143,7 +143,7 @@ After the superpowers skill's process completes:
 | Superpowers Output | Superspec Destination |
 |--------------------|-----------------------|
 | Review findings | Reported to user |
-| Checklist | Optional: `.specify/specs/NNN/checklist-review.md` |
+| Checklist | Optional: `specs/NNN/checklist-review.md` |
 
 ## Graceful Degradation
 

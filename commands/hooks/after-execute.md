@@ -8,7 +8,7 @@ evidence before completion claims are accepted.
 1. **Evidence verification**: For each completed task, verify that the expected output
    exists (tests pass, files created, etc.)
 2. **Test results**: If tests were run, verify they pass
-3. **Progress update**: Update `.specify/specs/NNN/progress.yml` with completed tasks
+3. **Progress update**: Update `specs/NNN/progress.yml` with completed tasks
    and current phase status
 4. **Review suggestion**: If all tasks in a phase are complete, suggest running
    `/speckit.superspec.review` before proceeding to the next phase

@@ -29,7 +29,7 @@ Run code review against spec requirements using review skills.
 ## Output
 
 Review findings reported to user. Optionally written to
-`.specify/specs/NNN-feature-name/checklist-review.md`.
+`specs/NNN-feature-name/checklist-review.md`.
 
 ## Finding Format
 

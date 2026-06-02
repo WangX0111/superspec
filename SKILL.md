@@ -36,20 +36,24 @@ for detection and integration details.
 
 ## Project Structure
 
-When initialized, superspec creates a `.specify/` directory in the project root:
+When initialized, superspec relies on spec-kit's two top-level directories
+at the project root: `.specify/` for tool metadata and `specs/` for feature
+artifacts.
 
 ```
-.specify/
-├── memory/
-│   └── constitution.md          # Project governance principles
-├── specs/
-│   └── NNN-feature-name/
-│       ├── spec.md              # Feature specification
-│       └── progress.yml         # Phase progress tracker (auto-managed)
-├── superpowers.yml              # Superpowers detection status (auto-managed)
-├── plan.md                      # Implementation plan
-├── tasks.md                     # Task breakdown
-└── templates/                   # Document templates (copied on init)
+your-project/
+├── .specify/
+│   ├── memory/
+│   │   └── constitution.md      # Project governance principles
+│   ├── superpowers.yml          # Superpowers detection status (auto-managed)
+│   └── templates/               # Document templates (copied on init)
+└── specs/
+    └── NNN-feature-name/
+        ├── spec.md              # Feature specification
+        ├── plan.md              # Implementation plan
+        ├── tasks.md             # Task breakdown
+        ├── progress.yml         # Phase progress tracker (auto-managed)
+        └── checklist-*.md       # Generated checklists
 ```
 
 ## Commands
@@ -79,7 +83,7 @@ timeout, user leaves, CLI crash), no progress is lost.
 Each feature spec directory contains a `progress.yml` file that records phase status:
 
 ```yaml
-# .specify/specs/NNN-feature-name/progress.yml
+# specs/NNN-feature-name/progress.yml
 feature: feature-name
 created: 2026-04-22
 current_phase: brainstorm
@@ -225,16 +229,16 @@ which files are present:
 ## `/speckit.specify`
 
 **Input**: Feature name and description via `$ARGUMENTS`.
-**Output**: `.specify/specs/NNN-feature-name/spec.md`
+**Output**: `specs/NNN-feature-name/spec.md`
 
 **Process**:
 1. Verify `.specify/memory/constitution.md` exists (abort with guidance if not)
-2. Determine the next spec number NNN (scan existing `.specify/specs/` directories)
+2. Determine the next spec number NNN (scan existing `specs/` directories)
 3. Read the template at `.specify/templates/spec-template.md`
 4. Read the constitution to understand project principles and constraints
 5. Interview the user about user scenarios, requirements, success criteria
 6. Generate `spec.md` from template with user responses
-7. Write to `.specify/specs/NNN-feature-name/spec.md`
+7. Write to `specs/NNN-feature-name/spec.md`
 
 **Next step suggestion**: Run `/speckit.superspec.brainstorm` on the new spec to discover edge cases.
 
@@ -242,7 +246,7 @@ which files are present:
 
 ## `/speckit.superspec.brainstorm`
 
-**Input**: Path to a spec file (e.g., `.specify/specs/001-auth/spec.md`) and an optional
+**Input**: Path to a spec file (e.g., `specs/001-auth/spec.md`) and an optional
 focus topic via `$ARGUMENTS`.
 **Output**: Updated spec file with refined edge cases, resolved open questions, and
 brainstorm log entries.
@@ -272,7 +276,7 @@ appends to the brainstorm log.
 ## `/speckit.plan`
 
 **Input**: Optional spec number or path via `$ARGUMENTS`. Defaults to the latest spec.
-**Output**: `.specify/specs/NNN-feature-name/plan.md`
+**Output**: `specs/NNN-feature-name/plan.md`
 
 **Process**:
 1. Read the target spec file and constitution
@@ -284,7 +288,7 @@ appends to the brainstorm log.
 6. Determine the **execution strategy**: which tasks need TDD, which support parallel
    subagent execution, where human checkpoints are needed
 7. Generate `plan.md` from template
-8. Write to `.specify/specs/NNN-feature-name/plan.md`
+8. Write to `specs/NNN-feature-name/plan.md`
 
 **Superpowers bridge**: If `writing-plans` skill is detected, read it and use its
 blueprint generation process to enhance the plan's task structure section. See
@@ -295,7 +299,7 @@ blueprint generation process to enhance the plan's task structure section. See
 ## `/speckit.superspec.tasks`
 
 **Input**: Optional spec number or path via `$ARGUMENTS`. Defaults to the latest spec.
-**Output**: `.specify/specs/NNN-feature-name/tasks.md`
+**Output**: `specs/NNN-feature-name/tasks.md`
 
 **Process**:
 1. Read the spec, plan, and constitution for the target feature
@@ -311,7 +315,7 @@ blueprint generation process to enhance the plan's task structure section. See
    - `[REVIEW]` — requires code review before proceeding
    - `[SUBAGENT]` — can be delegated to a subagent
 6. Define phase dependencies and checkpoint gates
-7. Write to `.specify/specs/NNN-feature-name/tasks.md`
+7. Write to `specs/NNN-feature-name/tasks.md`
 
 ---
 
@@ -366,14 +370,14 @@ explicit user approval. Never skip a checkpoint.
 ## `/speckit.checklist`
 
 **Input**: Checklist type and optional context via `$ARGUMENTS`.
-**Output**: `.specify/specs/NNN-feature-name/checklist-{type}.md`
+**Output**: `specs/NNN-feature-name/checklist-{type}.md`
 
 **Process**:
 1. Read the template at `.specify/templates/checklist-template.md`
 2. Read the spec, plan, and tasks for context
 3. Generate a checklist appropriate to the requested type (e.g., "launch readiness",
    "security audit", "accessibility review", "code review")
-4. Write to `.specify/specs/NNN-feature-name/checklist-{type}.md`
+4. Write to `specs/NNN-feature-name/checklist-{type}.md`
 
 ---
 

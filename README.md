@@ -75,7 +75,9 @@ Superpowers Bridge works standalone, but for enhanced capabilities install super
 
 ## Resumable by Design
 
-All project state is persisted in `.specify/` as plain-text markdown and YAML files.
+All project state is persisted as plain-text markdown and YAML files — under
+`.specify/memory/` for governance (`constitution.md`) and under `specs/NNN-*/`
+for per-feature state (`spec.md`, `plan.md`, `tasks.md`, `progress.yml`).
 When a session is interrupted — agent timeout, user leaves, CLI crash — no progress
 is lost. Run `/speckit.superspec.status` in a new session to see exactly where you left off:
 
@@ -111,13 +113,13 @@ technology stack, and quality gates.
 /speckit.specify "User authentication with email and password"
 ```
 
-This creates a feature specification at `.specify/specs/001-user-authentication/spec.md`
+This creates a feature specification at `specs/001-user-authentication/spec.md`
 with user stories, requirements, and success criteria.
 
 ### 3. Brainstorm Edge Cases
 
 ```
-/speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
+/speckit.superspec.brainstorm specs/001-user-authentication/spec.md
 ```
 
 The agent asks probing questions one at a time to discover boundary conditions, error
@@ -132,9 +134,26 @@ scenarios, security concerns, and UX pitfalls you may not have considered.
 /speckit.superspec.review              # Verify implementation against spec
 ```
 
+## Real-World Example
+
+To see what spec-kit + superspec actually produces after a complete run,
+browse the [`examples/static-landing-page/`](examples/static-landing-page/)
+snapshot — the verbatim disk output from a real Claude Code session driven
+through all 7 stages (constitution → specify → brainstorm → plan → tasks →
+execute → review).
+
+Open
+[`examples/static-landing-page/web/index.html`](examples/static-landing-page/web/index.html)
+in any browser to view the AI-generated landing page directly. The
+accompanying [snapshot README](examples/static-landing-page/README.md)
+explains how the artifacts were produced and how to reproduce them via
+[`scripts/e2e-agent-claude.sh`](scripts/e2e-agent-claude.sh).
+
 ## Project Structure
 
-After initialization, your project will contain:
+After initialization, your project will contain two top-level directories
+created by spec-kit — `.specify/` for tool metadata and `specs/` for
+feature artifacts:
 
 ```
 your-project/
@@ -142,14 +161,14 @@ your-project/
 │   ├── memory/
 │   │   └── constitution.md      # Project governance principles
 │   ├── superpowers.yml          # Superpowers detection status (auto-managed)
-│   ├── specs/
-│   │   └── 001-feature-name/
-│   │       ├── spec.md          # Feature specification
-│   │       ├── plan.md          # Implementation plan
-│   │       ├── tasks.md         # Task breakdown
-│   │       ├── progress.yml     # Phase progress tracker (auto-managed)
-│   │       └── checklist-*.md   # Generated checklists
 │   └── templates/               # Document templates
+├── specs/
+│   └── 001-feature-name/
+│       ├── spec.md              # Feature specification
+│       ├── plan.md              # Implementation plan
+│       ├── tasks.md             # Task breakdown
+│       ├── progress.yml         # Phase progress tracker (auto-managed)
+│       └── checklist-*.md       # Generated checklists
 └── ... (your source code)
 ```
 
@@ -284,7 +303,8 @@ Superpowers Bridge 可以独立工作，但安装 superpowers 技能可获得增
 
 ## 可中断恢复
 
-所有项目状态以纯文本（Markdown + YAML）持久化在 `.specify/` 目录中。
+所有项目状态以纯文本（Markdown + YAML）持久化——治理资产（宪章）在 `.specify/memory/` 下，
+每个功能的状态（规格、计划、任务、进度）在 `specs/NNN-*/` 下。
 会话中断时——代理超时、用户离开、CLI 崩溃——不会丢失任何进度。
 在新会话中运行 `/speckit.superspec.status` 即可查看中断点：
 
@@ -319,12 +339,12 @@ Superpowers:  brainstorming (已检测), writing-plans (未安装)
 /speckit.specify "用户邮箱密码登录认证"
 ```
 
-在 `.specify/specs/001-user-authentication/spec.md` 创建功能规格，包含用户故事、需求和成功标准。
+在 `specs/001-user-authentication/spec.md` 创建功能规格，包含用户故事、需求和成功标准。
 
 ### 3. 头脑风暴边界情况
 
 ```
-/speckit.superspec.brainstorm .specify/specs/001-user-authentication/spec.md
+/speckit.superspec.brainstorm specs/001-user-authentication/spec.md
 ```
 
 代理逐个提出探索性问题，发现你可能没有想到的边界条件、错误场景、安全隐患和用户体验陷阱。
@@ -337,6 +357,20 @@ Superpowers:  brainstorming (已检测), writing-plans (未安装)
 /speckit.superspec.execute             # 以 TDD 纪律和检查点方式实现
 /speckit.superspec.review              # 对照规格验证实现
 ```
+
+## 真实样例
+
+想看 spec-kit + superspec 实际跑完一遍的成果？查看
+[`examples/static-landing-page/`](examples/static-landing-page/) ——
+这是一次真实 Claude Code 会话完整走完 7 阶段（宪章 → 规格 → 头脑风暴 →
+计划 → 任务 → 执行 → 审查）后落到磁盘上的所有产物原样副本。
+
+直接用浏览器打开
+[`examples/static-landing-page/web/index.html`](examples/static-landing-page/web/index.html)
+即可看到 AI 生成的落地页。配套
+[样例 README](examples/static-landing-page/README.md) 详细说明了产生过程，
+以及如何用 [`scripts/e2e-agent-claude.sh`](scripts/e2e-agent-claude.sh)
+复现这次快照。
 
 ## 工作流
 

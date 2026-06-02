@@ -1,7 +1,7 @@
 # Implementation Plan: [FEATURE]
 
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link to spec.md]
-**Input**: Feature specification from `.specify/specs/[###-feature-name]/spec.md`
+**Input**: Feature specification from `specs/[###-feature-name]/spec.md`
 
 ## Summary
 
@@ -42,7 +42,7 @@
 ### Documentation (this feature)
 
 ```text
-.specify/specs/[###-feature]/
+specs/[###-feature]/
 ├── spec.md              # Feature specification
 ├── plan.md              # This file
 ├── tasks.md             # Task breakdown (/speckit.superspec.tasks output)
