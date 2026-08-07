@@ -23,6 +23,12 @@ jobs:
       - name: Validate metadata and docs
         run: python3 scripts/validate-extension-metadata.py
 
+      # The catalog installs from GitHub's generated tag ZIP, which spec-kit
+      # size-validates before extracting. Rebuild that ZIP and check it here so
+      # an oversized asset fails CI instead of failing `specify extension add`.
+      - name: Validate release archive
+        run: python3 scripts/validate-release-archive.py
+
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
