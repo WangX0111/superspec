@@ -1,0 +1,41 @@
+# Release archive contents
+# ---------------------------------------------------------------------------
+# spec-kit's catalog installs this extension from GitHub's generated tag ZIP
+# (https://github.com/WangX0111/superspec/archive/refs/tags/vX.Y.Z.zip). That
+# archive is produced by `git archive`, which honours `export-ignore`, so every
+# path marked below is present in the repository (and for `--dev` installs) but
+# is stripped from the published archive.
+#
+# This matters because spec-kit validates archives before extracting them
+# (src/specify_cli/_download_security.py):
+#
+#   MAX_DOWNLOAD_BYTES     50 MiB   whole archive as downloaded
+#   MAX_ZIP_ENTRIES           512   number of members
+#   MAX_ZIP_MEMBER_BYTES   10 MiB   single uncompressed member
+#   MAX_ZIP_TOTAL_BYTES    50 MiB   sum of uncompressed members
+#
+# assets/workflow-overview-en.png alone is ~12 MiB, which tripped the per-member
+# limit and made `specify extension add superspec` fail (issue #6).
+#
+# Keep this list in sync with scripts/validate-release-archive.py, which fails
+# CI if the archive regains excluded paths, loses runtime files, or approaches
+# any of the limits above.
+
+# Documentation media — rendered from the repository on GitHub, never read at
+# runtime. This is the payload that broke catalog installs.
+assets/            export-ignore
+
+# Sample project and real-run snapshots — teaching material for readers of the
+# repository, not part of the installed extension.
+examples/          export-ignore
+
+# Development, validation and end-to-end test tooling.
+scripts/           export-ignore
+.github/           export-ignore
+
+# Git metadata that has no meaning inside an installed extension directory.
+.gitattributes     export-ignore
+.gitignore         export-ignore
+
+# Secondary translation of the README; README.md ships as the required doc.
+README_zh.md       export-ignore

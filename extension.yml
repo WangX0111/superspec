@@ -2,7 +2,7 @@ schema_version: "1.0"
 extension:
   id: "superspec"
   name: "Superpowers Bridge"
-  version: "1.0.1"
+  version: "1.0.2"
   description: >-
     Bridges spec-kit specification-driven development with obra/superpowers
     agent capabilities (brainstorming, writing-plans, TDD, subagent-driven-development,
@@ -50,15 +50,20 @@ provides:
       file: "commands/review.md"
       description: "Run code review against spec requirements using review skills"
   templates:
-    - file: "templates/constitution-template.md"
+    - name: "constitution-template"
+      file: "templates/constitution-template.md"
       description: "Enhanced constitution with development workflow and quality gates"
-    - file: "templates/spec-template.md"
+    - name: "spec-template"
+      file: "templates/spec-template.md"
       description: "Enhanced spec with brainstorm prompts, open questions, and brainstorm log"
-    - file: "templates/plan-template.md"
+    - name: "plan-template"
+      file: "templates/plan-template.md"
       description: "Enhanced plan with execution strategy and superpowers dispatch"
-    - file: "templates/tasks-template.md"
+    - name: "tasks-template"
+      file: "templates/tasks-template.md"
       description: "Enhanced tasks with TDD/REVIEW/SUBAGENT execution markers"
-    - file: "templates/checklist-template.md"
+    - name: "checklist-template"
+      file: "templates/checklist-template.md"
       description: "Enhanced checklist with code review and spec compliance categories"
 hooks:
   after_tasks:
