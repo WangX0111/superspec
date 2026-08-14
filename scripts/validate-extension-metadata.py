@@ -41,6 +41,20 @@ def extract_extension_id(manifest: str) -> str:
     return match.group(1)
 
 
+def extract_commands_block(manifest: str) -> str:
+    """Return the text of the ``provides.commands:`` block only.
+
+    ``provides.templates[].name`` entries (e.g. ``constitution-template``)
+    share the same ``    - name:`` shape as commands but aren't subject to
+    the ``speckit.<id>.*`` namespace rule. Slicing out just the commands
+    block before scanning for names keeps them out of that check.
+    """
+    match = re.search(r"^  commands:\n((?:^ {4,}.*\n)*)", manifest, re.MULTILINE)
+    if not match:
+        fail("extension.yml must declare provides.commands[].name entries")
+    return match.group(1)
+
+
 def main() -> None:
     manifest = read("extension.yml")
 
@@ -54,9 +68,10 @@ def main() -> None:
     namespace_prefix = f"speckit.{ext_id}."
 
     # 1. provides.commands[*].name must use namespace prefix.
+    commands_block = extract_commands_block(manifest)
     command_names = re.findall(
         r"^    - name:[ \t]*[\"']?([^\"'\n]+)[\"']?",
-        manifest,
+        commands_block,
         re.MULTILINE,
     )
     if not command_names:
