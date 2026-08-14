@@ -173,7 +173,7 @@ else
   cd "$WORK"
 
   uvx --from git+https://github.com/github/spec-kit.git specify init \
-      --here --offline --integration claude --ignore-agent-tools --no-git --force \
+      --here --offline --integration claude --ignore-agent-tools --force \
       </dev/null >"$LOGS/init.log" 2>&1 \
     || { miss "specify init failed (see $LOGS/init.log)"; tail -n 20 "$LOGS/init.log"; exit 1; }
   pass "specify init (--integration claude) succeeded"

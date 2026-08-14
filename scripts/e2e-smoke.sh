@@ -4,7 +4,7 @@
 # End-to-end smoke test for the superspec extension.
 #
 # What it does (no LLM/agent required):
-#   1. Initializes a fresh spec-kit project in a temp dir (offline + --no-git).
+#   1. Initializes a fresh spec-kit project in a temp dir (offline).
 #   2. Installs THIS local checkout of superspec via `specify extension add --dev`.
 #   3. Simulates `/speckit.specify` by directly invoking spec-kit's
 #      `.specify/scripts/bash/create-new-feature.sh` (which is the same script
@@ -69,7 +69,7 @@ assert_grep()    {
 step "1/5" "Initialize spec-kit in a fresh project"
 cd "$WORK"
 if ! uvx --from git+https://github.com/github/spec-kit.git specify init \
-        --here --offline --integration codex --ignore-agent-tools --no-git --force \
+        --here --offline --integration codex --ignore-agent-tools --force \
         </dev/null >"$INIT_LOG" 2>&1; then
   fail "specify init exited non-zero (see $INIT_LOG)"
   echo "----- last 30 lines of init log -----"
